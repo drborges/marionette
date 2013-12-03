@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$:.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+require 'app'
+
+App.start(ARGV)

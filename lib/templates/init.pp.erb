@@ -1,0 +1,52 @@
+# == Class: <%= config[:class_name] %>
+#
+# TODO description of this module
+#
+# === Parameters
+#
+# [*message_type*]
+# The type of message to display.
+# Options: hello | bye
+#
+# [*receiver*]
+# The name of the person receiving the message
+#
+# === Examples
+#
+# * basic usage
+#     include <%= config[:class_name] %>
+#
+#
+# * passing in parameters
+#     class { '<%= config[:class_name] %>':
+#       message_type => bye,
+#       receiver     => 'Leeroy',
+#     }
+#
+# === Authors
+#
+# * user <mailto:user@email.com>
+#
+# === References
+# * Module Fundamentals
+# @see http://docs.puppetlabs.com/puppet/3/reference/modules_fundamentals.html
+#
+class <%= config[:class_name] %> (
+  $receiver     = 'Leeroy',
+  $message_type = hello,
+) {
+
+  # Puppet Selector structure
+  # @see http://docs.puppetlabs.com/learning/variables.html#selectors
+  $message = $message_type ? {
+    hello   => 'Well hello there',
+    bye     => 'Well sya later',
+  }
+
+  # The $message variable is accessible within the template below
+  # @see http://docs.puppetlabs.com/guides/templating.html
+  file { '/etc/motd':
+    ensure  => file,
+    content => template('<%= config[:class_name] %>/etc/motd.erb'),
+  }
+}
