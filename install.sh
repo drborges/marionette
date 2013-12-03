@@ -1,29 +1,40 @@
 #!/bin/bash
 
 usage() {
-  echo "Usage:"
-  echo "$0 /installation/path"
+  echo '[ERROR] --path parameter must be an absolute path'
+  echo ''
+  echo 'Usage:'
+  echo "  $0 [--path /absolute/destination/path]"
+  exit 1
 }
 
 install () {
-  $MARIONETTE_HOME=$1
-  $ENV=$HOME/.bashrc
+  MARIONETTE_HOME=$1
+  ENV=$HOME/.bashrc
 
   git clone http://code.premierinc.com/source/scm/puppet/premierinc-marionette.git $MARIONETTE_HOME
   sed -i '/alias marionette=/d' $ENV
   echo "alias marionette=${MARIONETTE_HOME}/bin/marionette" >> $ENV
 }
 
+install_with_path() {
+  case $1 in
+    /*) install $1
+      ;;
+     *) usage
+      ;;
+  esac
+}
+
 case "$1" in
   help)
     usage
-    exit 0
   ;;
   --path)
-    install $1
+    install_with_path $2
   ;;
   *)
-    install $PWD
+    install $PWD/marionette
   ;;
 esac
 
