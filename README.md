@@ -7,6 +7,9 @@ It provides an out of the box integration with frameworks, and tools such as rsp
 
 ## Installation
 
+    $ curl -L https://raw.github.com/drborges/marionette/master/install.sh > install.sh
+    $ ./install.sh --path /absolute/install/path
+
 ## Usage
 
 #### Generating a new module:
