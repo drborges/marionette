@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 usage() {
   echo '[ERROR] --path parameter must be an absolute path'
@@ -10,11 +10,12 @@ usage() {
 
 install () {
   MARIONETTE_HOME=$1
-  ENV=$HOME/.bashrc
+  [[ $SHELL = '/bin/zsh' ]] && ENV=$HOME/.zshrc || ENV=$HOME/.bashrc
 
   git clone https://github.com/drborges/marionette.git $MARIONETTE_HOME
-  sed -i '/alias marionette=/d' $ENV
+  sed -n '/alias marionette=/!p' $ENV > tmp && mv -f tmp $ENV
   echo "alias marionette=${MARIONETTE_HOME}/bin/marionette" >> $ENV
+  source $ENV
 }
 
 install_with_path() {
