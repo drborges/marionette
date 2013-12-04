@@ -12,7 +12,7 @@ install () {
   MARIONETTE_HOME=$1
   ENV=$HOME/.bashrc
 
-  git clone http://code.premierinc.com/source/scm/puppet/premierinc-marionette.git $MARIONETTE_HOME
+  git clone https://github.com/drborges/marionette.git $MARIONETTE_HOME
   sed -i '/alias marionette=/d' $ENV
   echo "alias marionette=${MARIONETTE_HOME}/bin/marionette" >> $ENV
 }
