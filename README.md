@@ -1,4 +1,4 @@
-# PremierInc Marionette
+# Marionette
 
 Marionette is a simple CLI tool that provides useful scaffolding functionalities for puppet codebases.  
 It provides an out of the box integration with frameworks, and tools such as rspec-puppet, serverspec, and vagrant, freeing you from having to setup all these frameworks everytime you start a new project, which means you can focus right away on the real work, and get things done.
@@ -7,8 +7,7 @@ It provides an out of the box integration with frameworks, and tools such as rsp
 
 ## Installation
 
-    $ curl -L https://raw.github.com/drborges/marionette/master/install.sh > install.sh
-    $ ./install.sh --path /absolute/install/path
+    $ curl -L https://raw.github.com/drborges/marionette/master/install.sh | $SHELL /dev/stdin --path "~/marionette"
 
 ## Usage
 

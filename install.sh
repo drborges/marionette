@@ -15,7 +15,6 @@ install () {
   git clone https://github.com/drborges/marionette.git $MARIONETTE_HOME
   sed -n '/alias marionette=/!p' $ENV > tmp && mv -f tmp $ENV
   echo "alias marionette=${MARIONETTE_HOME}/bin/marionette" >> $ENV
-  source $ENV
 }
 
 install_with_path() {
